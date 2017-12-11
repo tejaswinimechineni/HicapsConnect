@@ -48,7 +48,7 @@ namespace HICAPSAPI.Controllers
             var arr = ctr.getTerminalList();
 
             var req = new HicapsConnectControl.HicapsConnectControl.ClaimRequest() { ProviderNumberId = "AAMT1234" };
-            req.addClaimLine("01", "1001", "11", DateTime.Now, 100);
+            req.addClaimLine("02", "1001", "11", DateTime.Now, 100);
 
 
 
