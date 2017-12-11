@@ -1,0 +1,103 @@
+﻿1001,INITIAL CONSULT
+1002,INITIAL TREAT  
+1003,INITIAL A/H    
+1004,CONSULT        
+1005,STANDARD CONS  
+1006,LONG CONS      
+1007,CONS AH        
+1008,LONG CONS AH   
+1009,HOME VISIT     
+1010,HOME VISIT AH  
+1011,TRAVELLING     
+1012,TRAVELLING     
+1100,X RAY          
+1101,X RAYS         
+1102,X RAYS         
+1103,X RAYS         
+1104,X RAY          
+1105,X RAY          
+1106,X RAY          
+1107,X RAY          
+1108,X RAY          
+1109,X RAY          
+1110,X RAY          
+1111,X RAY          
+1112,X RAY          
+1113,X RAY          
+1114,X RAY          
+1115,X RAY          
+1116,X RAY          
+1117,X RAY          
+1118,X RAY          
+1119,X RAY          
+1120,X RAY          
+1121,X RAY          
+1122,X RAY          
+1123,X RAY          
+1124,X RAY          
+1125,X RAY          
+1126,X RAY          
+1127,X RAY          
+1128,X RAY          
+1129,X RAY          
+1130,X RAY          
+1131,X RAY          
+1132,X RAY          
+1133,X RAY          
+1134,X RAY          
+1135,X RAY          
+1136,X RAY          
+1137,X RAY          
+1138,X RAY          
+1139,X RAY          
+1140,X RAY          
+1141,X RAY          
+1142,X RAY          
+1143,X RAY          
+1144,X RAY          
+1145,X RAY          
+1146,X RAY          
+1147,X RAY          
+1148,X RAY          
+1149,X RAY          
+1150,X RAY          
+1151,X RAY          
+1152,X RAY          
+1201,INTERPRET X RAY
+1301,INITIAL CONS CS
+1302,CONSUL/TREAT CS
+1303,STD CONSULT CS 
+1304,LONG CONSUL CS 
+1401,EXAMINATION    
+1402,EXAMINATION    
+1403,EXAMINATION    
+1404,REPORTS        
+1405,REPORTS        
+1406,REPORTS        
+1407,CONSULTATIVE   
+1408,ASSESMENT      
+1501,CARE           
+1502,CARE           
+1503,CARE           
+1504,CARE           
+1505,CARE           
+1506,CARE           
+1601,RE ASSESS      
+1602,RE ASSESS      
+1603,RE ASSESS      
+1604,RE ASSESS      
+1605,RE ASSESS      
+1606,RE ASSESS      
+1701,BRIEF REPORT   
+1702,LONG REPORT    
+1801,CONSULT-20 MIN 
+1802,CONSULT-30 MIN 
+1803,CONSULT-40 MIN 
+1804,INITIAL CONSULT
+1901,MASSAGE        
+1902,MASSAGE        
+1903,NUTRITION      
+1904,ORTHOTIC       
+9996,DENTAL PROMOT'N
+9997,CHIRO PROMOTION
+9998,PHYSIO PROMOT'N

@@ -1,0 +1,37 @@
+﻿<Window x:Class="HicapsConnectClient12.AboutUs"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="About Hicaps Connect Client" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Height="377" Width="468" Background="#FFE9E9E9">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="Acknowledgement" FontSize="14" FontWeight="Bold" Margin="5" />
+        <ScrollViewer Grid.Row="1" Background="White">
+            <TextBlock TextWrapping="Wrap" Padding="5,1" Margin="5">
+                HICAPS Connect - License Agreement<LineBreak/>
+                <LineBreak/>
+                Installation of this HICAPS Connect program ("Program") creates a binding Agreement on the following terms, between your company ("You") and National Australia Bank Ltd ABN 12 004 044 937 ("NAB"), governed by the law of Victoria, Australia. If you do not agree, press 'Cancel' or 'Back'.<LineBreak/>
+                <LineBreak/>
+                All intellectual property rights in the Program and its accompanying materials are owned exclusively by NAB. You are granted a non-exclusive, non-transferable licence to install and use the Program on a computer in Australia, solely for the purpose of exchanging data with the HICAPS terminal and Your practice management software on a computer operated by You. <LineBreak/>
+                <LineBreak/>
+                You must not attempt to copy or reverse engineer the Program or access its source code.  You must not rent, lease, sell, sublicense or otherwise transfer the Program without NAB’s permission or use the Program for commercial purposes or to provide a service to any third party.  NAB may at any time terminate Your licence at NAB's discretion.<LineBreak/>
+                <LineBreak/>
+                The Program is provided by NAB “as is” and free of charge, for Your convenience. As a result, NAB: (i) excludes any and all warranties regarding the Program, and (ii) does not accept any liability in connection with the Program (whether direct or indirect, and whether arising in contract, tort (including negligence) or otherwise), except if and solely to the extent any statutory warranties apply which cannot legally be excluded, in which case NAB's liability is limited to the re-supply of this Program.<LineBreak/>
+                <LineBreak/>
+                Without limiting the foregoing, NAB accepts no responsibility for (i) Your systems or data, and You must ensure you maintain virus and password protection, back up your data, and verify accurate importing of data from your HICAPS terminal to the practice management software on your compute, (ii) any errors or omissions associated with using the Program, or (iii) any business interruption, computer failure or malfunction, loss of business information,  loss of business profits or any other pecuniary loss arising out of the use or inability to use the Program.<LineBreak/>
+                <LineBreak/>
+                NAB does not provide any services with the Program.  You are responsible for  installation of the Program on your computer (including determining compatibility of the Program with your particular computer and practice management software).   NAB does not provide any support or maintenance of the Program.<LineBreak/>
+                <LineBreak/>
+                No waiver of rights on the part of NAB will be effective unless made in writing and signed by NAB.<LineBreak/>
+                <LineBreak/>
+                This Agreement constitutes the entire agreement between the You and NAB and replaces all other representations.  All variations or extensions of this Agreement must be in writing.<LineBreak/>
+                <LineBreak/>
+                If for any reason a court finds any provision of this Agreement, or portion thereof, to be unenforceable, that provision will be enforced to the maximum extent permissible so as to affect the intent of the parties, and the remainder of this Agreement will continue in full force and effect.<LineBreak/>
+            </TextBlock>
+        </ScrollViewer>
+        <Button Grid.Row="2" Content="OK" Padding="10,2" HorizontalAlignment="Right" Margin="5" Name="OkButton" Click="OkButton_Click" />
+    </Grid>
+</Window>

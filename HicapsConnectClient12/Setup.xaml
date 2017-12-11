@@ -1,0 +1,93 @@
+﻿<Page x:Class="HicapsConnectClient12.Setup"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HicapsConnectClient12"
+      mc:Ignorable="d"  d:DesignWidth="476"
+      xmlns:prop="clr-namespace:HicapsConnectClient12.Properties"
+	Title="Setup" d:DesignHeight="470" Loaded="Page_Loaded">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Header="TERMINAL DETAILS" Padding="5,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="Selected terminal:" Name="SelectedTerminalLabel" />
+                
+                <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="SYNC" Margin="0,0,10,0" Padding="10,2" Name="SyncButton" Click="SyncButton_Click" />
+                    <Button Content="TERMINAL TEST" Name="terminalTest" Click="terminalTest_Click" Padding="10,2"  />
+                    <Button Content="SELECT NEW TERMINAL" VerticalAlignment="Center" Margin="10,0,0,0" Padding="10,2" Name="SelectTerminalButton" Click="SelectTerminalButton_Click" />
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="2" Header="FUNCTIONS" Padding="5" Margin="0,10,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <CheckBox Content="         Enable Claim to Sale" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" 
+                          Margin="0,0,30,5" Name="claimToSaleCheckBox" IsChecked="{Binding Source={x:Static prop:Settings.Default}, 
+                                                                                                  Path=ClaimToSale, Mode=TwoWay}" />
+                <CheckBox Content="         Enable Claim to Sale Prompt" Grid.Row="1" Grid.Column="0" 
+                          VerticalAlignment="Center" Name="claimToSalePromptCheckBox" IsChecked="{Binding Source={x:Static prop:Settings.Default}, 
+                                                                                                  Path=ClaimToSalePrompt, Mode=TwoWay}" />
+                
+                
+                <Button Content="RECEIPT SETUP" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" Width="Auto" Padding="4,2,5,2" Margin="0,15,0,0" Name="ReceiptSetupButton" Click="ReceiptSetupButton_Click" />
+                
+                
+            </Grid>
+        </GroupBox>
+        <DockPanel Grid.Row="4" Margin="0,5,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="Client Version: " Margin="5,5,0,0" />
+                <Label Grid.Row="0" Grid.Column="1" Margin="0,5,5,0" Name="ClientVersionLabel" />
+                <Label Grid.Row="1" Grid.Column="0" Content="HICAPS Connect Control version: " Margin="5,5,0,0" />
+                <Label Grid.Row="1" Grid.Column="1" Margin="0,5,5,0" Name="HicapsVersionLabel" />
+            </Grid>
+        </DockPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="5">
+            <Button Content="About Us" HorizontalAlignment="Right" Padding="10,2" 
+                Margin="5" Name="AboutUsButton" Click="AboutUsButton_Click" />
+            <Button Grid.Row="2" Grid.Column="0" Content="Check for updates" Name="CheckForUpdatesButton" 
+                    Padding="10, 2" Margin="5" Click="CheckForUpdatesButton_Click" />
+            
+        </StackPanel>
+        
+    </Grid>
+</Page>

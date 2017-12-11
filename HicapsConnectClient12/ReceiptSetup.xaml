@@ -1,0 +1,50 @@
+﻿<Window x:Class="HicapsConnectClient12.ReceiptSetup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Receipt Setup" ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow"
+        MinWidth="300" Background="{StaticResource TabControl_BackgroundBrush_Base}" 
+        Height="Auto" Width="312" SizeToContent="WidthAndHeight">
+    <StackPanel Margin="5">
+        <Label Grid.Row="0" Grid.Column="0" Content="Enter Site Details for Receipt Header" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="1" Grid.Column="0" Content="Site Name:   " />
+            <TextBox Grid.Row="1" Grid.Column="1" Name="SiteName" TextChanged="SiteName_TextChanged" />
+            <Label Grid.Row="2" Grid.Column="0" Content="Site Address:" Margin="0,2,0,0" />
+            <TextBox Grid.Row="2" Grid.Column="1" Margin="0,2,0,0" Name="SiteAddress" TextChanged="SiteAddress_TextChanged" />
+        </Grid>
+        <GroupBox Header="Site Contact Details:" Height="Auto" Name="groupBox1" Width="Auto" Margin="0,5,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="Phone:   " Margin="0,2,0,0" />
+                <TextBox Grid.Row="0" Grid.Column="1" Margin="0,2,0,0" Name="SitePhone" TextChanged="SitePhone_TextChanged" />
+                <Label Grid.Row="1" Grid.Column="0" Content="Fax:" Margin="0,2,0,0" />
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="0,2,0,0" Name="SiteFax" TextChanged="SiteFax_TextChanged" />
+                <Label Grid.Row="2" Grid.Column="0" Content="Email:" Margin="0,2,0,0" />
+                <TextBox Grid.Row="2" Grid.Column="1" Margin="0,2,0,0" Name="SiteEmail" TextChanged="SiteEmail_TextChanged" />
+            </Grid>
+        </GroupBox>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="OK" IsDefault="True" Margin="0,5,10,0" MinWidth="40" Name="OkButton" Click="OkButton_Click" />
+            <Button Content="Cancel" IsCancel="True" Margin="0,5,0,0" Padding="2" Name="CancelButton" Click="CancelButton_Click" />
+        </StackPanel>
+        
+    </StackPanel>
+</Window>

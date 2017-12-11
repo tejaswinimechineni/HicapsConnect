@@ -1,0 +1,351 @@
+﻿<Application x:Class="HicapsConnectClient12.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:s="clr-namespace:System;assembly=mscorlib"
+             xmlns:mwt="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+
+        <!-- Some of the code here is "inspired" by these tutorials:
+            1. http://www.blogs.intuidev.com/post/2010/post/2010/01/25/TabControlStyling_PartOne.aspx
+            2. http://tech.pro/tutorial/730/the-wpf-tab-control-inside-and-out
+        -->
+
+        <!-- Static resources (mostly taken from link 1.) -->
+        <!-- colors -->
+        <Color x:Key="BorderColor_Base">#888</Color>
+        <Color x:Key="TabControl_BackgroundColor_Base">#E9E9E9</Color>
+
+        <!-- dimensions -->
+        <Thickness x:Key="TabPanel_Padding">16,0,16,0</Thickness>
+
+        <!-- brushes -->
+        <SolidColorBrush x:Key="SelectedTabColor" Color="#1C355E" />
+        <SolidColorBrush x:Key="UnSelectedTabColor" Color="#A2B2C9" />
+        <SolidColorBrush x:Key="MouseOverTabColor" Color="#4F688F" />
+        <SolidColorBrush x:Key="TabItem_BorderBrush_Selected" 
+                       Color="{StaticResource BorderColor_Base}" />
+        <SolidColorBrush x:Key="TabControl_BackgroundBrush_Base" 
+                       Color="{StaticResource TabControl_BackgroundColor_Base}"/>
+        <SolidColorBrush x:Key="TabPage_InnerBorderBrushDark" 
+                       Color="#FF8DB2E3"/>
+
+        <LinearGradientBrush x:Key="TabPanel_BackgroundBrush" 
+                           StartPoint="0,0" EndPoint="0,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Offset="0.98" Color="Transparent"/>
+                <GradientStop Offset="0.99" 
+               Color="{StaticResource BorderColor_Base}"/>
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="TabPage_InnerBorderBrushBright" 
+                         Color="{StaticResource BorderColor_Base}" />
+        
+        <!-- mask converter thingo -->
+        <BorderGapMaskConverter x:Key="BorderGapMaskConverter"/>
+
+        <!-- Global styles 
+             These are used to provide the same font sizes across
+             platforms. See App.xaml.cs for supporting code
+        -->
+        <Style TargetType="{x:Type Window}">
+            <Setter Property="FontFamily" Value="Tahoma" />
+            <Setter Property="FontSize" Value="11" />
+        </Style>
+        <Style TargetType="{x:Type Page}">
+            <Setter Property="FontFamily" Value="Tahoma" />
+            <Setter Property="FontSize" Value="11" />
+        </Style>
+
+        <!-- Style for Frames -->
+        <Style TargetType="Frame">
+            <Setter Property="IsTabStop" Value="False" />
+        </Style>
+        
+        <!-- Style for GroupBoxes -->
+        <Style TargetType="GroupBox">
+            <Setter Property="BorderBrush" Value="#A2B2C9" />
+            
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate
+                        TargetType="GroupBox" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                        <Grid
+                            SnapsToDevicePixels="True">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition
+                                    Width="6" />
+                                <ColumnDefinition
+                                    Width="Auto" />
+                                <ColumnDefinition
+                                    Width="*" />
+                                <ColumnDefinition
+                                    Width="6" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+                                    Height="Auto" />
+                                <RowDefinition
+                                    Height="Auto" />
+                                <RowDefinition
+                                    Height="*" />
+                                <RowDefinition
+                                    Height="6" />
+                            </Grid.RowDefinitions>
+                            <Border
+                                BorderThickness="{TemplateBinding Border.BorderThickness}"
+                                CornerRadius="4,4,4,4"
+                                BorderBrush="#00FFFFFF"
+                                Background="{TemplateBinding Panel.Background}"
+                                Grid.Column="0"
+                                Grid.Row="1"
+                                Grid.ColumnSpan="4"
+                                Grid.RowSpan="3" />
+                            <Border
+                                Padding="3,0,3,0"
+                                Name="Header"
+                                Grid.Column="1"
+                                Grid.Row="0"
+                                Grid.RowSpan="2" BorderBrush="{x:Null}" OpacityMask="{x:Null}" Panel.ZIndex="20">
+                            
+                                <ContentPresenter
+                                    RecognizesAccessKey="True"
+                                    Content="{TemplateBinding HeaderedContentControl.Header}"
+                                    ContentTemplate="{TemplateBinding HeaderedContentControl.HeaderTemplate}"
+                                    ContentStringFormat="{TemplateBinding HeaderedContentControl.HeaderStringFormat}"
+                                    ContentSource="Header"
+                                    SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}"
+                                    TextElement.Foreground="#1C355E"
+                                    TextElement.FontWeight="Normal"/>
+                            </Border>
+                            <ContentPresenter
+                                Content="{TemplateBinding ContentControl.Content}"
+                                ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}"
+                                ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}"
+                                Margin="{TemplateBinding Control.Padding}"
+                                SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}"
+                                Grid.Column="1"
+                                Grid.Row="2"
+                                Grid.ColumnSpan="2" />
+                            <Border
+                                BorderThickness="{TemplateBinding Border.BorderThickness}"
+                                CornerRadius="4,4,4,4"
+                                BorderBrush="{TemplateBinding Border.BorderBrush}"
+                                Grid.Row="1"
+                                Grid.ColumnSpan="4"
+                                Grid.RowSpan="3">
+                                <Border.OpacityMask>
+                                    <MultiBinding ConverterParameter="7" Converter="{StaticResource BorderGapMaskConverter}">
+                                        <Binding ElementName="Header" Path="ActualWidth"/>
+                                        <Binding Path="ActualWidth" RelativeSource="{RelativeSource Self}"/>
+                                        <Binding Path="ActualHeight" RelativeSource="{RelativeSource Self}"/>
+                                    </MultiBinding>
+                                </Border.OpacityMask>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Style for Buttons -->
+        <Style TargetType="Button">
+            
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border
+                            Name="Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="2,2,2,2">
+                            <ContentPresenter Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource SelectedTabColor}" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="{StaticResource UnSelectedTabColor}" />
+                            </Trigger>
+
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="False" />
+                                    <Condition Property="IsPressed" Value="False" />
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" Value="#4564A9" />
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Background" Value="#4564A9" />
+            <Setter Property="Foreground" Value="White" />
+
+        </Style>
+
+        <!-- Style for TabItem's -->
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Grid Margin="0,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- rounded corner to left of tab -->
+                            <Border Width="6"
+                                    Background="{StaticResource SelectedTabColor}"
+                                    Grid.Column="0"
+                                    Padding="0,0,0,0"
+                                    Name="LeftRounded">
+                                <Border
+                                        Background="White"
+                                        CornerRadius="0, 0, 4, 0"
+                                        Margin="0,0,0,0"
+                                        Padding="0,0,0,0">
+                                </Border>
+                            </Border>
+
+                            <!--Tab item container -->
+                            <Border
+                                Name="Border"
+                                Background="Blue"
+                                BorderThickness="0,0,0,0"
+                                CornerRadius="4, 4, 0, 0"
+                                Margin="0,0,0,0"
+                                Padding="2,2,2,1"
+                                Grid.Column="1">
+
+                                <ContentPresenter x:Name="ContentSite"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    ContentSource="Header"
+                                    Margin="12, 2, 12, 2" />
+                            </Border>
+
+                            <!-- rounded corner to right of tab -->
+                            <Border Width="6"
+                                    Background="{StaticResource SelectedTabColor}"
+                                    Grid.Column="2"
+                                    Padding="0,0,0,0"
+                                    Name="RightRounded">
+                                <Border
+                                        Background="White"
+                                        CornerRadius="0, 0, 0, 4"
+                                        Margin="0,0,0,0"
+                                        Padding="0,0,0,0">
+                                </Border>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#1C355E" />
+                                <Setter TargetName="LeftRounded" Property="Background" Value="#1C355E" />
+                                <Setter TargetName="RightRounded" Property="Background" Value="#1C355E" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="#A2B2C9" />
+                                <Setter TargetName="LeftRounded" Property="Background" Value="#A2B2C9" />
+                                <Setter TargetName="RightRounded" Property="Background" Value="#A2B2C9" />
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True" />
+                                    <Condition Property="IsSelected" Value="False" />
+                                </MultiTrigger.Conditions>
+                                <Setter TargetName="Border" Property="Background" Value="#4F688F" />
+                                <Setter TargetName="LeftRounded" Property="Background" Value="#4F688F" />
+                                <Setter TargetName="RightRounded" Property="Background" Value="#4F688F" />
+                            </MultiTrigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="Foreground">
+                <Setter.Value>White</Setter.Value>
+            </Setter>
+            <Setter Property="FontWeight">
+                <Setter.Value>Bold</Setter.Value>
+            </Setter>
+            <Setter Property="FontFamily">
+                <Setter.Value>Tahoma</Setter.Value>
+            </Setter>
+
+        </Style>
+
+        <!-- Style for TabControl -->
+        <Style TargetType="{x:Type TabControl}">
+            <Setter Property="SnapsToDevicePixels" Value="true"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabControl">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Container for the actual tabs -->
+                            <Border Background="{StaticResource TabPanel_BackgroundBrush}"
+                                    Padding="{StaticResource TabPanel_Padding}"
+                                    Grid.Row="0"
+                                    BorderThickness="0,0,0,0">
+
+                                <TabPanel IsItemsHost="True"
+                                          Margin="0,0,0,0"/>
+                            </Border>
+
+                            <!-- blue bar between the tabs and the content area -->
+                            <Border Background="{StaticResource SelectedTabColor}"
+                                    Grid.Row="1"
+                                    Height="10"
+                                    CornerRadius="8, 8, 0, 0"
+                                    BorderThickness="0,0,0,0">
+
+                            </Border>
+
+                            <!-- Outer border of TabControl -->
+                            <Border BorderThickness="0,0,0,0"
+                             Grid.Row="2"
+                             BorderBrush="{StaticResource TabItem_BorderBrush_Selected}"
+                             Background="{StaticResource TabControl_BackgroundBrush_Base}"
+                             CornerRadius="0, 0, 8, 8">
+
+                                <!-- Inner border #1 -->
+                                <Border BorderThickness="0"
+                                        Margin="8"
+                                        BorderBrush="{StaticResource TabPage_InnerBorderBrushDark}">
+
+                                    <!-- Inner border #2 -->
+                                    <Border BorderThickness="0"
+                                            BorderBrush="{StaticResource TabPage_InnerBorderBrushBright}"
+                                            Margin="0"
+                                            Padding="2, 2, 3, 3">
+
+                                        <!-- The tab's actual content -->
+                                        <ContentPresenter ContentSource="SelectedContent" Margin="0" />
+                                    </Border>
+                                </Border>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Application.Resources>
+</Application>
