@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4D39CAA9-884C-43B6-B5B3-9383F3BB5D56}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HICAPSConnectLibrary</RootNamespace>
+    <AssemblyName>HICAPSConnectLibrary</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Encrypt\RSA.cs" />
+    <Compile Include="Encrypt\SFileRead.cs" />
+    <Compile Include="Encrypt\SFileWrite.cs" />
+    <Compile Include="Encrypt\TripleDes.cs" />
+    <Compile Include="NetworkClass.cs" />
+    <Compile Include="Ports\CommPort.cs" />
+    <Compile Include="Ports\ICommPort.cs" />
+    <Compile Include="Ports\IPNetwork.cs" />
+    <Compile Include="Ports\Serial.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Protocol\CParams.cs" />
+    <Compile Include="Protocol\DataQuery.cs" />
+    <Compile Include="Protocol\Fields\HField.cs" />
+    <Compile Include="Protocol\HFields.cs" />
+    <Compile Include="Protocol\HMessage.cs" />
+    <Compile Include="Protocol\HParams.cs" />
+    <Compile Include="Protocol\HTerminal.cs" />
+    <Compile Include="Protocol\HTransaction.cs" />
+    <Compile Include="Protocol\MParams.cs" />
+    <Compile Include="Server\HConnection.cs" />
+    <Compile Include="Server\TCPServer.cs" />
+    <Compile Include="Server\UDPServer.cs" />
+    <Compile Include="StringExtensions.cs" />
+    <Compile Include="TerminalClass.cs" />
+    <Compile Include="TerminalParameters.cs" />
+    <Compile Include="Utils\BaseLogging.cs" />
+    <Compile Include="Utils\FieldDecoder.cs" />
+    <Compile Include="Utils\FieldEncoder.cs" />
+    <Compile Include="Utils\FileRepo.cs" />
+    <Compile Include="Utils\ILogging.cs" />
+    <Compile Include="Utils\Logging.cs" />
+    <Compile Include="Utils\SLogging.cs" />
+    <Compile Include="Utils\TemplateProcessor.cs" />
+    <Compile Include="WebClientTimeout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="public.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Client\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

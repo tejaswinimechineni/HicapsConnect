@@ -106,7 +106,7 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Users\localz\Desktop\HICAPSConnect\HicapsConnectControl\HicapsConnectControl.csproj">
+    <ProjectReference Include="..\HicapsConnectControl\HicapsConnectControl.csproj">
       <Project>{fda8d7b5-3cd9-452d-92bb-cd3f3fd8de27}</Project>
       <Name>HicapsConnectControl</Name>
     </ProjectReference>
