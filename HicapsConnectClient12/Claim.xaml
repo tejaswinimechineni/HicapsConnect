@@ -158,7 +158,7 @@
                 <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right" Margin="0,0,2,0">
                     <Button Content="Remove Selected" Margin="5,5,0,0" Padding="10,2" Name="RemoveSelectedButton" Click="RemoveSelectedButton_Click" />
                     <Button Content="Remove All" Margin="5,5,0,0" Padding="10,2" Name="RemoveAllButton" Click="RemoveAllButton_Click" />
-                    <Button Content="Send" Margin="5,5,0,0" Padding="10,2" Name="SendButton" Click="SendButton_Click" />
+                    <Button Content="Send" Margin="5,5,0,0" Padding="10,2" Name="SendButton" Click="SendButton_Click" Height="26" VerticalAlignment="Top" />
                 </StackPanel>
                 
             </Grid>

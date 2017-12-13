@@ -280,7 +280,7 @@ namespace HicapsConnectClient12
             HicapsConnectControl.HicapsConnectControl.ClaimPharmRequest request;
             //HicapsConnectControl.HicapsConnectControl.AllItemListRequest itemRequest;
 
-            main.hicaps.DisplayStatusWindow(true);
+          //  main.hicaps.DisplayStatusWindow(true);
 
             if (QuoteMode)
             {
@@ -471,7 +471,7 @@ namespace HicapsConnectClient12
                     }
                 }
             }
-            main.hicaps.DisplayStatusWindow(false);
+           // main.hicaps.DisplayStatusWindow(false);
             SendButton.IsEnabled = true;
         }
 

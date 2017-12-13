@@ -268,7 +268,7 @@ namespace HicapsConnectClient12
 
             // create the HicapsConnectControl.
             hicaps = new HicapsConnectControl.HicapsConnectControl();
-            hicaps.DisplayStatusWindow(false);
+         //   hicaps.DisplayStatusWindow(false);
             hicaps.TerminalListChanged += new HicapsConnectControl.TerminalListChangedEventHandler(hicaps_termListChanged);
             
 
@@ -401,14 +401,14 @@ namespace HicapsConnectClient12
                 // 'cached' to disk. That functionality comes from 
                 // the cache object.
                 
-                hicaps.DisplayStatusWindow(false);
+             //   hicaps.DisplayStatusWindow(false);
                 Debug.WriteLine("++++++++++++++ Syncing");
                 SyncStatus("Syncing providers...");
                 providers = cache.syncProviderCache(force, currentTerminal, hicaps);
-                hicaps.DisplayStatusWindow(false);
+             //   hicaps.DisplayStatusWindow(false);
                 SyncStatus("Syncing merchants...");
                 merchants = cache.syncMerchantCache(force, currentTerminal, hicaps);
-                hicaps.DisplayStatusWindow(false);
+               // hicaps.DisplayStatusWindow(false);
                 SyncStatus("Syncing card details...");
                 string[] cardDetails = cache.syncCardCache(force, currentTerminal, hicaps);
                 cards = new Dictionary<string, string>();
@@ -422,12 +422,12 @@ namespace HicapsConnectClient12
                         cards[cardNo] = fund;
                     }
                 }
-                hicaps.DisplayStatusWindow(false);
+               // hicaps.DisplayStatusWindow(false);
 
                 //Items request
                 SyncStatus("Syncing items...");
                 NewUpdateItemFields();
-                hicaps.DisplayStatusWindow(false);
+               // hicaps.DisplayStatusWindow(false);
                 
 
                 if (Properties.Settings.Default.SyncTransactions)
@@ -438,7 +438,7 @@ namespace HicapsConnectClient12
                     SyncStatus("Syncing transactions...");
                     SyncTransactions();
                 }
-                hicaps.DisplayStatusWindow(false);
+               // hicaps.DisplayStatusWindow(false);
                 // updating this property will update SyncStatus as well
                 LastSync = DateTime.Now;
                 }
@@ -530,7 +530,7 @@ namespace HicapsConnectClient12
             {
                 if (currentTerminal == null && chooser == null)
                 {
-                    hicaps.DisplayStatusWindow(false);
+                   // hicaps.DisplayStatusWindow(false);
                     string[] terms = hicaps.getTerminalList();
 
                     bool found = false;

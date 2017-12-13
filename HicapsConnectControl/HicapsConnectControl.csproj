@@ -16,7 +16,8 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <ApplicationIcon>hicaps.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>4.0</OldToolsVersion>
@@ -149,73 +150,27 @@
   <ItemGroup>
     <Compile Include="ActiveXControlHelpers.cs">
     </Compile>
-    <Compile Include="DevelopmentLicence.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DevelopmentLicence.Designer.cs">
-      <DependentUpon>DevelopmentLicence.cs</DependentUpon>
-    </Compile>
     <Compile Include="HicapsConnectControl.cs" />
     <Compile Include="HicapsConnectControl.Designer.cs">
       <DependentUpon>HicapsConnectControl.cs</DependentUpon>
     </Compile>
     <Compile Include="HicapsConnectProtocol.cs" />
-    <Compile Include="PanPrompt.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PanPrompt.designer.cs">
-      <DependentUpon>PanPrompt.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RefundPwd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RefundPwd.designer.cs">
-      <DependentUpon>RefundPwd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="StatusForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StatusForm.Designer.cs">
-      <DependentUpon>StatusForm.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DevelopmentLicence.resx">
-      <DependentUpon>DevelopmentLicence.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="HicapsConnectControl.resx">
       <DependentUpon>HicapsConnectControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PanPrompt.resx">
-      <DependentUpon>PanPrompt.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="RefundPwd.resx">
-      <DependentUpon>RefundPwd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StatusForm.resx">
-      <DependentUpon>StatusForm.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="Resources\background4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="hicaps.ico" />
-    <None Include="Resources\Terminal_back2.png" />
-    <None Include="Resources\terminal_back.png" />
-    <None Include="Resources\hicaps connect.jpg" />
-    <None Include="Resources\title_bar.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

@@ -34,7 +34,6 @@ namespace HicapsConnectControl
         private readonly string STR_Connecting = "Connecting";
         private readonly string STR_SendingRequest = "Sending request...";
         private readonly string STR_Sending = "Sending";
-        StatusForm _myStatusForm;
         private string networkName = "";
 
         public HicapsConnectProtocol() { }
@@ -244,10 +243,10 @@ namespace HicapsConnectControl
         }
         public void setStatus(string text)
         {
-            if (_myStatusForm != null && !_myStatusForm.IsDisposed)
-            {
-                _myStatusForm.SetText(text);
-            }
+            //if (_myStatusForm != null && !_myStatusForm.IsDisposed)
+            //{
+            //    _myStatusForm.SetText(text);
+            //}
         }
         private string SendMessageLocal(string XmlRequest, int timeout)
         {
@@ -261,7 +260,7 @@ namespace HicapsConnectControl
                 NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", "HicapsConnectPipe", PipeDirection.InOut);
 
                 // Connect to the pipe or wait until the pipe is available.
-                setStatus(STR_Connecting);
+                //setStatus(STR_Connecting);
 
                 pipeClient.Connect(serverConnectTimeout);
 
@@ -376,10 +375,10 @@ namespace HicapsConnectControl
             // string base64String = Convert.ToBase64String(Encoding.Default.GetBytes(XmlRequest));
             //XmlRequest = base64String;
 
-            _myStatusForm = new StatusForm();
-            _myStatusForm.Show();
-            _myStatusForm.BringToFront();
-            _myStatusForm.Refresh();
+            //_myStatusForm = new StatusForm();
+            //_myStatusForm.Show();
+            //_myStatusForm.BringToFront();
+            //_myStatusForm.Refresh();
 
             try
             {

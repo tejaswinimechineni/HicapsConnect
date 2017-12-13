@@ -75,8 +75,7 @@ namespace HicapsConnectControl
         //List<string> terminalServerList;
         private string _defaultServerUrl = "";
         private bool rescanLocalTerminals = true;
-        private StatusForm _myStatusForm;
-
+    
         private bool _resetTerminalListThread = false;
 
         private Dictionary<string, DateTime> ignoreServerIpSeen = new Dictionary<string, DateTime>();
@@ -3937,9 +3936,6 @@ namespace HicapsConnectControl
 
                 InitializeComponent();
                 
-                _myStatusForm = new StatusForm(this);
-                _myStatusForm.Hide();
-
                 ProcessClass.CheckAndRunController();
                 //this.EnabledChanged += new EventHandler(HicapsConnectControl_EnabledChanged);
 
@@ -4051,11 +4047,11 @@ namespace HicapsConnectControl
             string terminalOn = HicapsTools.ProcessClass.getUserConfigFileSetting("StatusBox", "true").ToLower();
             if (terminalOn == "false")
             {
-                DisplayStatusWindow(false);
+                //DisplayStatusWindow(false);
             }
             else
             {
-                DisplayStatusWindow(true);
+               // DisplayStatusWindow(true);
             }
         }
 
@@ -4422,7 +4418,7 @@ namespace HicapsConnectControl
         {
 
             string strMRPwd = "";
-            strMRPwd = RefundPwd.ShowBox("", "");
+            //strMRPwd = RefundPwd.ShowBox("", "");
             if (strMRPwd == null)
             {
                 EftposDepositResponse myResponse = new EftposDepositResponse();
@@ -4455,38 +4451,38 @@ namespace HicapsConnectControl
         public RefundResponse sendRefund(RefundRequest myRequest)
         {
 
-            string strMRPwd = "";
-            strMRPwd = RefundPwd.ShowBox("", "");
-            if (strMRPwd == null)
-            {
-                RefundResponse myResponse = new RefundResponse();
-                myResponse.ResponseCode = "TC";
-                myResponse.ResponseText = "TRANSACTION CANCELLED";
-                myResponse.TransactionAmount = myRequest.TransactionAmount;
-                myResponse.ReadOnly = true;
-                return myResponse;
-            }
-            if (strMRPwd != "")
-                strMRPwd = string.Format("{0:d6}", Convert.ToInt32(strMRPwd));
+            //string strMRPwd = "";
+            //strMRPwd = RefundPwd.ShowBox("", "");
+            //if (strMRPwd == null)
+            //{
+            //    RefundResponse myResponse = new RefundResponse();
+            //    myResponse.ResponseCode = "TC";
+            //    myResponse.ResponseText = "TRANSACTION CANCELLED";
+            //    myResponse.TransactionAmount = myRequest.TransactionAmount;
+            //    myResponse.ReadOnly = true;
+            //    return myResponse;
+            //}
+            //if (strMRPwd != "")
+            //    strMRPwd = string.Format("{0:d6}", Convert.ToInt32(strMRPwd));
 
-            myRequest.MerchantPassword = strMRPwd;
+            //myRequest.MerchantPassword = strMRPwd;
             myRequest.ServerUrl = getDefaultServer(myRequest.ServerUrl);
 
             if (!myRequest.PrimaryAccountNumber.isNumeric())
             {
                 if (DisplayPanPrompt() || myRequest.PromptCardDetails)
                 {
-                    PanPrompt myPrompt = new PanPrompt(ref myRequest);
-                    DialogResult myResult = myPrompt.ShowDialog();
-                    if (myResult == DialogResult.Cancel)
-                    {
-                        RefundResponse myResponse = new RefundResponse();
-                        myResponse.ResponseCode = "TC";
-                        myResponse.ResponseText = "TRANSACTION CANCELLED";
-                        myResponse.TransactionAmount = myRequest.TransactionAmount;
-                        myResponse.ReadOnly = true;
-                        return myResponse;
-                    }
+                    //PanPrompt myPrompt = new PanPrompt(ref myRequest);
+                    //DialogResult myResult = myPrompt.ShowDialog();
+                    //if (myResult == DialogResult.Cancel)
+                    //{
+                    //    RefundResponse myResponse = new RefundResponse();
+                    //    myResponse.ResponseCode = "TC";
+                    //    myResponse.ResponseText = "TRANSACTION CANCELLED";
+                    //    myResponse.TransactionAmount = myRequest.TransactionAmount;
+                    //    myResponse.ReadOnly = true;
+                    //    return myResponse;
+                    //}
                 }
             }
             return sendObject<RefundRequest, RefundResponse>(myRequest);
@@ -4708,7 +4704,7 @@ namespace HicapsConnectControl
                     xmlResponse = returnNetworkErrorXml("FC", STR_NetworkRequestTimedOut, typeof(U).Name.ToString());
                 }
             }
-            StatusWindowClose();
+          //  StatusWindowClose();
             if (string.IsNullOrEmpty(xmlResponse)) { xmlResponse = string.Empty; }
             xmlResponse = xmlResponse.Replace("&#x1;", "");
             xmlResponse = xmlResponse.Replace("&#x0;", "");
@@ -4732,7 +4728,7 @@ namespace HicapsConnectControl
         //    File.WriteAllText("C:\\HicapsConnect\\XML\\" + typeof(U).ToString(), xmlResponse);
             // Protect the response object from changes.
             myResult.ReadOnly = true;
-            StatusWindowClose();
+            //StatusWindowClose();
 
             return myResult;
         }
@@ -4924,7 +4920,7 @@ namespace HicapsConnectControl
             // If these threads are different, it returns true.
             if (this.lStatus.InvokeRequired)
             {
-                //SetTextCallback d = new SetTextCallback(SetStatusText);
+                SetTextCallback d = new SetTextCallback(SetStatusText);
                 //this.Invoke(d, new object[] { text });
             }
             else
@@ -5432,12 +5428,12 @@ namespace HicapsConnectControl
 
                     if (!client.Connected) { throw new SocketException(10061); } /*10061 = Could not connect to server */
 
-                    StatusWindowOpen();
+                    //StatusWindowOpen();
                     if (serveripandport.Length >= 4)
                     {
                         if (serveripandport[3] == "COMX")
                         {
-                            StatusWindowNonModal();
+                            //StatusWindowNonModal();
                         }
                     }
                     client.SendTimeout = timeout;
@@ -5565,7 +5561,7 @@ namespace HicapsConnectControl
                 }
 
                 client.Close();
-                StatusWindowClose();
+                //StatusWindowClose();
             }
             catch (Exception)
             {
@@ -5599,7 +5595,7 @@ namespace HicapsConnectControl
                 string className = BaseMessage.extractClassName(clearXmlRequest);
                 XmlResponse = returnNetworkErrorXml("EN", STR_NetworkError, className);
             }
-            StatusWindowClose();
+            //StatusWindowClose();
             return XmlResponse;
         }
 
@@ -5634,7 +5630,7 @@ namespace HicapsConnectControl
 
 
                 Log(STR_SendingRequest);
-                StatusWindowOpen();
+               //StatusWindowOpen();
                 HicapsConnectProtocol myProtocol = new HicapsConnectProtocol(HicapsTools.ProcessClass.getUserConfigFileSetting("NetworkName", ""));
                 XmlRequest = myProtocol.encodeXmlMessage(XmlRequest, true);
                 setStatus(STR_Connecting + " Local" + addString);
@@ -5772,7 +5768,7 @@ namespace HicapsConnectControl
                 string className = BaseMessage.extractClassName(clearXmlRequest);
                 XmlResponse = returnNetworkErrorXml("EN", STR_NetworkError, className);
             }
-            StatusWindowClose();
+          //  StatusWindowClose();
 
 
             return XmlResponse;
@@ -5797,18 +5793,18 @@ namespace HicapsConnectControl
             // Thread.Sleep(100);
         }
 
-        private void StatusWindowClose()
-        {
-            try
-            {
-                if (_myStatusForm != null && !_myStatusForm.IsDisposed && _myStatusForm.Visible)
-                {
-                    _myStatusForm.Hide();
-                }
-            }
-            catch
-            { }
-        }
+        //private void StatusWindowClose()
+        //{
+        //    try
+        //    {
+        //        if (_myStatusForm != null && !_myStatusForm.IsDisposed && _myStatusForm.Visible)
+        //        {
+        //            _myStatusForm.Hide();
+        //        }
+        //    }
+        //    catch
+        //    { }
+        //}
 
         public string getDefaultServerConfig(string server)
         {
@@ -5943,56 +5939,35 @@ namespace HicapsConnectControl
             }
             return server;
         }
-        private void StatusWindowNonModal()
-        {
-            try
-            {
-                if (showStatusWindow)
-                {
-                    if (_myStatusForm != null && !_myStatusForm.IsDisposed)
-                    {
-                        _myStatusForm.TopMost = false;
-                        Application.DoEvents();
-                        Thread.Sleep(200);
-                    }
-                }
-            }
-            catch (Exception)
-            { }
-        }
+        //private void StatusWindowNonModal()
+        //{
+        //    try
+        //    {
+        //        if (showStatusWindow)
+        //        {
+        //            if (_myStatusForm != null && !_myStatusForm.IsDisposed)
+        //            {
+        //                _myStatusForm.TopMost = false;
+        //                Application.DoEvents();
+        //                Thread.Sleep(200);
+        //            }
+        //        }
+        //    }
+        //    catch (Exception)
+        //    { }
+        //}
         /// <summary>
         /// Used to turn on or off the status display window.  By default the status window will always be displayed
         /// </summary>
         /// <param name="flag"></param>
-        public void DisplayStatusWindow(bool flag)
-        {
-            showStatusWindow = flag;
-            if (!flag)
-            {
-                StatusWindowClose();
-            }
-        }
-        private void StatusWindowOpen()
-        {
-            try
-            {
-                if (showStatusWindow)
-                {
-                    if (_myStatusForm == null || _myStatusForm.IsDisposed)
-                    {
-                        _myStatusForm = new StatusForm(this);
-                    }
-                    _myStatusForm.Show();
-                    _myStatusForm.BringToFront();
-                }
-                else
-                {
-                    StatusWindowClose();
-                }
-            }
-            catch
-            { }
-        }
+        //public void DisplayStatusWindow(bool flag)
+        //{
+        //    showStatusWindow = flag;
+        //    if (!flag)
+        //    {
+        //        StatusWindowClose();
+        //    }
+        //}
        
 
  

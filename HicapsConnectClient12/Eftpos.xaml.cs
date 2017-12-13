@@ -41,7 +41,7 @@ namespace HicapsConnectClient12
                 SaleButton.IsEnabled = true;
                 return;
             }
-            main.hicaps.DisplayStatusWindow(true);
+        //    main.hicaps.DisplayStatusWindow(true);
 
             HicapsConnectControl.HicapsConnectControl.SaleRequest request = null;
             
@@ -127,7 +127,7 @@ namespace HicapsConnectClient12
             {
                 new ResponseError(response.ResponseCode, response.ResponseText).Show();
             }
-            main.hicaps.DisplayStatusWindow(false);
+           // main.hicaps.DisplayStatusWindow(false);
             RefundButton.Visibility = System.Windows.Visibility.Visible;
             SaleButton.IsEnabled = true;
 
@@ -150,7 +150,7 @@ namespace HicapsConnectClient12
         private void RefundButton_Click(object sender, RoutedEventArgs e)
         {
             RefundButton.IsEnabled = false;
-            main.hicaps.DisplayStatusWindow(true);
+            //main.hicaps.DisplayStatusWindow(true);
 
             HicapsConnectControl.HicapsConnectControl.RefundRequest request
                 = new HicapsConnectControl.HicapsConnectControl.RefundRequest();
@@ -185,7 +185,7 @@ namespace HicapsConnectClient12
                 ResetFields();
             }
 
-            main.hicaps.DisplayStatusWindow(false);
+           // main.hicaps.DisplayStatusWindow(false);
             RefundButton.IsEnabled = true;
         }
 

@@ -69,7 +69,7 @@ namespace HicapsConnectClient12
 
         private bool sendCancel(string RRN, string provider, decimal transAmount)
         {
-            main.hicaps.DisplayStatusWindow(true);
+           // main.hicaps.DisplayStatusWindow(true);
 
             HicapsConnectControl.HicapsConnectControl.ClaimCancelRequest request
                 = new HicapsConnectControl.HicapsConnectControl.ClaimCancelRequest();
@@ -125,7 +125,7 @@ namespace HicapsConnectClient12
                 r.printReport(false);
             }
 
-            main.hicaps.DisplayStatusWindow(false);
+            //main.hicaps.DisplayStatusWindow(false);
 
             if (response.ResponseCode == "00")
             {
